@@ -1,21 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  result: any;
-
-  constructor() { }
-
-  ngOnInit() {
-    const localResult = localStorage.getItem('LT_ALLOWED_MILES');
-    if (localResult) {
-      this.result = localResult;
-    }
-  }
+  constructor(public appService: AppService) { }
 
 }

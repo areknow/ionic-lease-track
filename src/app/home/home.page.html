@@ -11,12 +11,12 @@
 
 <ion-content>
   <div class="flex-wrapper">
-    <ng-container *ngIf="!result">
+    <ng-container *ngIf="!appService.result">
       <ion-button routerLink="/settings" routerDirection="root">Input data</ion-button>
     </ng-container>
-    <ng-container *ngIf="result">
+    <ng-container *ngIf="appService.result">
       <div class="allowed-miles">
-        <div class="miles">{{ result }}</div>
+        <div class="miles">{{ appService.result }}</div>
         <div>Allowed miles</div>
       </div>
     </ng-container>
