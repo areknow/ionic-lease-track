@@ -9,7 +9,7 @@ import * as moment from 'moment';
 })
 export class SettingsPage implements OnInit {
 
-  odometer: number;
+  odometer = 0;
   miles: any;
   start: any;
 
