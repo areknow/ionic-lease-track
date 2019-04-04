@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/" routerDirection="root">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button routerLink="/" routerDirection="root">home</ion-button>
+
+  <form #form="ngForm">
+    <ion-list>
+      <ion-list-header>Mileage form</ion-list-header>
+      <ion-item>
+        <ion-label>Odometer offset</ion-label>
+        <ion-input class="text-right" slot="end" type="number" name="odometer" [(ngModel)]="odometer" (ionChange)="calculate()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Yearly miles</ion-label>
+        <ion-select name="miles" [(ngModel)]="miles" (ionChange)="calculate()">
+          <ion-select-option value="10000">10,000</ion-select-option>
+          <ion-select-option value="12000">12,000</ion-select-option>
+          <ion-select-option value="15000">15,000</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Lease start</ion-label>
+        <ion-datetime name="start" [(ngModel)]="start" (ionChange)="calculate()" display-format="MM/DD/YYYY">
+        </ion-datetime>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <ng-container *ngIf="daysPassed && allowedMiles">
+    <ion-list>
+      <ion-list-header>Statistics</ion-list-header>
+      <ion-item>
+        <ion-label>Days since start</ion-label>
+        <ion-note slot="end" color="tertiary">{{ daysPassed }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Allowed miles</ion-label>
+        <ion-note slot="end" color="tertiary">{{ result }}</ion-note>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
 </ion-content>

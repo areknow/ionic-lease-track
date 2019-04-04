@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/settings" routerDirection="root">
+        <ion-icon slot="icon-only" name="cog"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button routerLink="settings" routerDirection="root">settings</ion-button>
+  <div class="flex-wrapper">
+    <div class="allowed-miles">
+      <div class="miles">{{ result }}</div>
+      <div>Allowed miles</div>
+    </div>
+  </div>
 </ion-content>

@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  result: any;
+
   constructor() { }
 
   ngOnInit() {
+    const localResult = localStorage.getItem('LT_ALLOWED_MILES');
+    if (localResult) {
+      this.result = localResult;
+    }
   }
 
 }
