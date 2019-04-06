@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { AppService } from '../app.service';
 import { SettingsPage } from './settings.page';
 
 const routes: Routes = [
@@ -20,9 +19,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SettingsPage],
-  providers: [
-    AppService
-  ]
+  declarations: [SettingsPage]
 })
 export class SettingsPageModule {}
