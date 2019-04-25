@@ -7,14 +7,15 @@ import * as moment from 'moment';
 export class AppService {
 
   odometer = 0;
-  miles: any;
-  start: any;
+  miles = 10000;
+  start: string;
 
-  daysPassed: any;
-  allowedMiles: any;
-  result: any;
+  daysPassed = 0;
+  allowedMiles = 0;
+  result = 0;
 
   constructor() {
+    this.start = moment().format('YYYY-MM-DD');
     // Load stored data if it exists
     this.loadLocal();
     // Calculate mileage
@@ -47,7 +48,7 @@ export class AppService {
       localStorage.setItem('LT_START', this.start);
     }
     if (this.daysPassed) {
-      localStorage.setItem('LT_DAYS', this.daysPassed);
+      localStorage.setItem('LT_DAYS', String(this.daysPassed));
     }
   }
 
@@ -63,13 +64,13 @@ export class AppService {
       this.odometer = Number(localOdometer);
     }
     if (localMiles) {
-      this.miles = localMiles;
+      this.miles = Number(localMiles);
     }
     if (localStart) {
       this.start = localStart;
     }
     if (localDays) {
-      this.daysPassed = localDays;
+      this.daysPassed = Number(localDays);
     }
   }
 }
