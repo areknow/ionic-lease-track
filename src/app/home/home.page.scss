@@ -1,18 +1,6 @@
-.logo {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 75px;
-  img {
-    height: 40px;
-    width: 40px;
-  }
-}
-
-
 .cta {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
   font-weight: bold;
   .miles {
     font-size: 100px;
@@ -26,7 +14,7 @@
 }
 
 .form {
-  margin-top: 100px;
+  margin-top: 80px;
   padding: 0 20px;
   .input-container {
     margin-bottom: 7px;
@@ -94,7 +82,7 @@
 .footer {
   font-size: 14px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 80px;
   width: 100%;
   div {
     font-family: "HelveticaNeue-Light"
