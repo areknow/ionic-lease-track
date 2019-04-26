@@ -1,9 +1,5 @@
 <ion-content class="home">
 
-  <!-- <div class="logo">
-    <img src="assets/icon/trak-logo.png">
-  </div> -->
-
   <div class="cta">
     <div class="miles">{{ appService.result | number }}</div>
     <span>Miles allowed</span>
@@ -30,15 +26,20 @@
         <input name="start" [(ngModel)]="appService.start" (change)="appService.calculate()" type="date">
       </div>
     </div>
+    <div class="input-container">
+      <div class="input-label">Lease length</div>
+      <div class="select-container">
+        <div class="select-label">{{ appService.length }} months</div>
+        <select name="length" [(ngModel)]="appService.length" (change)="appService.calculate()">
+          <option *ngFor="let item of lengthOptions" [value]="item.value">{{ item.label }}</option>
+        </select>
+      </div>
+    </div>
   </form>
 
   <div class="footer">
-    <div>Total lease time</div>
-    <span>
-      <ng-container *ngIf="false">1 Year, </ng-container> 
-      <ng-container *ngIf="false">3 Months, </ng-container>
-      <ng-container>{{ appService.daysPassed }} Days</ng-container>
-    </span>
+    <div>Remaining lease time</div>
+    <span>{{ appService.remainingTime }}</span>
   </div>
 
 </ion-content>

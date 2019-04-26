@@ -9,10 +9,13 @@ export class AppService {
   odometer = 0;
   miles = 10000;
   start: string;
+  length = 24;
 
   daysPassed = 0;
   allowedMiles = 0;
   result = 0;
+
+  remainingTime: string;
 
   constructor() {
     this.start = moment().format('YYYY-MM-DD');
@@ -30,6 +33,9 @@ export class AppService {
     this.daysPassed = moment().diff(this.start, 'days');
     this.allowedMiles = this.daysPassed * (this.miles / 365);
     this.result = Math.floor(this.allowedMiles + this.odometer);
+    // Calculate remaining time
+    const end = moment(this.start).add(this.length, 'M');
+    this.remainingTime = moment(end).fromNow(true);
     // Store values to localstore
     this.saveLocal();
   }
@@ -47,6 +53,9 @@ export class AppService {
     if (this.start) {
       localStorage.setItem('LT_START', this.start);
     }
+    if (this.length) {
+      localStorage.setItem('LT_LENGTH', String(this.length));
+    }
     if (this.daysPassed) {
       localStorage.setItem('LT_DAYS', String(this.daysPassed));
     }
@@ -59,6 +68,7 @@ export class AppService {
     const localOdometer = localStorage.getItem('LT_ODOMETER');
     const localMiles = localStorage.getItem('LT_YEARLY_MILES');
     const localStart = localStorage.getItem('LT_START');
+    const localLength = localStorage.getItem('LT_LENGTH');
     const localDays = localStorage.getItem('LT_DAYS');
     if (localOdometer) {
       this.odometer = Number(localOdometer);
@@ -69,8 +79,12 @@ export class AppService {
     if (localStart) {
       this.start = localStart;
     }
+    if (localLength) {
+      this.length = Number(localLength);
+    }
     if (localDays) {
       this.daysPassed = Number(localDays);
     }
   }
+
 }
