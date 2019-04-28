@@ -6,6 +6,8 @@ import * as moment from 'moment';
 })
 export class AppService {
 
+  today = moment().format('YYYY-MM-DD');
+
   odometer = 0;
   miles = 10000;
   start: string;
@@ -18,7 +20,7 @@ export class AppService {
   remainingTime: string;
 
   constructor() {
-    this.start = moment().format('YYYY-MM-DD');
+    this.start = this.today;
     // Load stored data if it exists
     this.loadLocal();
     // Calculate mileage
@@ -29,6 +31,10 @@ export class AppService {
    * Compute mileage
    */
   calculate(): void {
+    // Check if start value exists
+    if (!this.start) {
+      this.start = this.today;
+    }
     // Calculate days passed and allowed miles
     this.daysPassed = moment().diff(this.start, 'days');
     this.allowedMiles = this.daysPassed * (this.miles / 365);
