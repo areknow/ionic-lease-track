@@ -27,7 +27,7 @@
       <div class="input-label">Lease start</div>
       <div class="date-container">
         <div class="date-label">{{ appService.start | date : 'shortDate' }}</div>
-        <input name="start" [(ngModel)]="appService.start" (change)="appService.calculate()" type="date">
+        <input name="start" [(ngModel)]="appService.start" (change)="appService.calculate()" type="date" [max]="appService.today">
       </div>
     </div>
     <div class="input-container">
