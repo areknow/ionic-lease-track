@@ -39,6 +39,10 @@ export class AppService {
     this.daysPassed = moment().diff(this.start, 'days');
     this.allowedMiles = this.daysPassed * (this.miles / 365);
     this.result = Math.floor(this.allowedMiles + this.odometer);
+    // Result should never be negative
+    if (this.result < 0) {
+      this.result = 0;
+    }
     // Calculate remaining time
     const end = moment(this.start).add(this.length, 'M');
     this.remainingTime = moment(end).fromNow(true);
